@@ -1,4 +1,4 @@
-// ConnectButton.tsx
+import './ConnectButton.scss';
 import { useEthers, useEtherBalance } from "@usedapp/core";
 
 export default function ConnectButton() {
@@ -11,9 +11,9 @@ export default function ConnectButton() {
 
   return account ? (
     <div>
-      <p>
-        Connected
-      </p>
+      <p className={'balance-title'}>Snowge Balance</p>
+      <p className={'balance-number'}>5,000,000</p>
+      <p className={'connected'}>Connected</p>
     </div>
   ) : (
     <button onClick={handleConnectWallet}>Connect to a wallet</button>

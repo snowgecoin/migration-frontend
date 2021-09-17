@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.scss';
 import * as React from "react"
 import './scss/main.scss'
@@ -54,8 +53,7 @@ function App() {
         <div class="container">
           <div class="loader"></div>
           <div className="in-loader">
-            Coming Soon
-            {/* <ConnectButton/> */}
+            <ConnectButton/>
           </div>
         </div>
       </main>
