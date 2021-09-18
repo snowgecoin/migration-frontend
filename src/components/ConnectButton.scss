@@ -27,6 +27,8 @@
 
   &:hover {
     transform: scale(1.1);
+    color: $snowge-light-blue;
+    border-color: $snowge-blue-white;
     transition: all 200ms linear;
     cursor: pointer;
   }
