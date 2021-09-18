@@ -1,3 +1,5 @@
+@import "../scss/main";
+
 .connected {
   font-size: 0.5em;
 
@@ -11,4 +13,21 @@
 .balance-number {
   color: #555555;
   font-size: 0.8em;
+}
+
+.snowgebutton {
+  color: #555555;
+  border-radius: 10px;
+  border-color: #555555;
+  font-family: Dosis-Book;
+  font-weight: bold;
+  background-color: transparent;
+  padding: 5px;
+  transition: all 200ms linear;
+
+  &:hover {
+    transform: scale(1.1);
+    transition: all 200ms linear;
+    cursor: pointer;
+  }
 }

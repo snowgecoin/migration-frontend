@@ -16,6 +16,6 @@ export default function ConnectButton() {
       <p className={'connected'}>Connected</p>
     </div>
   ) : (
-    <button onClick={handleConnectWallet}>Connect to a wallet</button>
+    <button className="snowgebutton" onClick={handleConnectWallet}>Connect to a Wallet</button>
   );
 }
