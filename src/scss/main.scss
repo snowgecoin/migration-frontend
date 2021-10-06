@@ -13,6 +13,16 @@
 
 // @import url(http://fonts.googleapis.com/css?family=Roboto);
 
+.main {
+  color: #232129;
+  padding: 96px;
+  font-family: -apple-system, Roboto, sans-serif, serif;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  flex: flex;
+}
+
 body {
 	margin: 0px;
 	background: radial-gradient(#CECECE, #fff);
@@ -20,6 +30,7 @@ body {
 	justify-content: center;
 	align-items: center;
 	height: 100vh;
+  overflow: hidden;
 }
 .container {
 	width: 350px;
@@ -177,5 +188,16 @@ body {
     -webkit-filter: blur(0px);
             filter: blur(0px);
     opacity: 1;
+  }
+}
+
+@media (max-width: 748px) {
+  /*Mobile View */
+  .title {
+    padding: 50px;
+  }
+
+  .main {
+    padding: 10px;
   }
 }
