@@ -3,11 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { DAppProvider } from "@usedapp/core";
+import { ChainId, DAppProvider } from "@usedapp/core";
 
 ReactDOM.render(
   <React.StrictMode>
-    <DAppProvider config={{}}>
+    <DAppProvider config={{readOnlyChainId: ChainId.BSC}}>
       <App />
     </DAppProvider>
   </React.StrictMode>,
