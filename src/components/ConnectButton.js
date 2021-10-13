@@ -80,7 +80,6 @@ export default function ConnectButton() {
   }
 
   async function changeNetwork(){
-    console.log(library);
     try {
       await library.provider.sendAsync({
         method: 'wallet_switchEthereumChain',
@@ -88,20 +87,20 @@ export default function ConnectButton() {
       });
     } catch (switchError) {
       console.log(switchError);
-      if (switchError.code === 4902) {
+      if (switchError.code === 4902 || switchError.message === "Unrecognized chain ID \"0x38\". Try adding the chain using wallet_addEthereumChain first.") {
         try {
-          await library.providersendAsync({
+          await library.provider.sendAsync({
             method: 'wallet_addEthereumChain',
             params: [{
               chainId: '0x38',
-              rpcUrl: 'https://bsc-dataseed.binance.org/',
-              chainName: 'BSC',
+              rpcUrls: ['https://bsc-dataseed1.binance.org/'],
+              chainName: 'Binance Smart Chain Mainnet',
               nativeCurrency: {
                 name: 'BNB',
                 symbol: 'BNB', // 2-6 characters long
                 decimals: 18,
               },
-              blockExplorerUrl: 'https://bscscan.com',
+              blockExplorerUrls: ['https://bscscan.com'],
             }]
           });
         } catch (addError) {
@@ -109,6 +108,27 @@ export default function ConnectButton() {
         }
       }
       // handle other "switch" errors
+    }
+  }
+
+  async function addNetwork() {
+    try {
+      await library.provider.sendAsync({
+        method: 'wallet_addEthereumChain',
+        params: [{
+          chainId: '0x38',
+          rpcUrls: ['https://bsc-dataseed1.binance.org/'],
+          chainName: 'Binance Smart Chain Mainnet',
+          nativeCurrency: {
+            name: 'BNB',
+            symbol: 'BNB', // 2-6 characters long
+            decimals: 18,
+          },
+          blockExplorerUrls: ['https://bscscan.com'],
+        }]
+      });
+    } catch (addError) {
+      console.log(addError);
     }
   }
 
@@ -124,9 +144,10 @@ export default function ConnectButton() {
 
 
   return(<div>
-    {chainId != ChainId.BSC &&
+    {(account && (chainId != ChainId.BSC)) &&
       <div>
         <p className={'balance-title'}>Switch to BSC</p>
+        <button className="snowgebutton" onClick={() => addNetwork()}>Add the BSC Network</button>
         <button className="snowgebutton" onClick={() => changeNetwork()}>Switch Networks</button>
       </div>}
     {chainId == ChainId.BSC && (account ? (
@@ -141,5 +162,6 @@ export default function ConnectButton() {
     ) : (
       <button className="snowgebutton" onClick={handleConnectWallet}>Connect to a Wallet</button>
     ))}
+    {!account && <button className="snowgebutton" onClick={handleConnectWallet}>Connect to a Wallet</button>}
   </div>);
 }
